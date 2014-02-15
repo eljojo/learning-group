@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <title>Party List Thingy!</title>
+  </head>
+  <body>
+    <h1>People that are invited to the party</h1>
+		<ul>
+			<% @guests.each do |name| %>
+				<li><%= name %></li>
+			<% end %>
+		</ul>
+  </body>
+</html>
