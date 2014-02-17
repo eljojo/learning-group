@@ -5,9 +5,24 @@
   <body>
     <h1>People that are invited to the party</h1>
 		<ul>
-			<% @guests.each do |name| %>
-				<li><%= name %></li>
+			<% @guests.each do |person| %>
+				<li><%= person[:name] %> is bringing <%= person[:gift] %></li>
 			<% end %>
 		</ul>
+    <form action="/add" method="POST">
+      <label>Name:</label>
+      <input name="guest_name" type="text"/>
+      <label>Gift:</label>
+			<% if @presents.empty? then %>
+			<input name="gift" type="text" />
+			<% else %>
+			<select name="gift">
+				<% @presents.each do |present| %>
+				<option value="<%= present %>"><%= present %></option>
+				<% end %>
+			</select>
+			<% end %>
+      <button type="submit">Add me to the list!</button>
+    </form>
   </body>
 </html>
